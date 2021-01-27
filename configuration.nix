@@ -1,9 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 let
   cfg = config.services.foundationdb;
 in
 with lib; mkIf cfg.enable {
-  services.foundationdb.package = pkgs.foundationdb;
   systemd.services.foundationdb = {
     serviceConfig = {
       Restart = "always";

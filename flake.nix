@@ -32,18 +32,19 @@
       };
       derivation = { inherit foundationdb; };
     in
-    rec {
+    with pkgs; rec {
       packages.${system} = derivation;
       defaultPackage.${system} = foundationdb;
       apps.${system}.foundationdb = mkApp { drv = foundationdb; };
       defaultApp.${system} = apps.foundationdb;
-      legacyPackages.${system} = pkgs.extend overlay;
-      devShell.${system} = pkgs.callPackage ./shell.nix derivation;
+      legacyPackages.${system} = extend overlay;
+      devShell.${system} = callPackage ./shell.nix derivation;
       nixosModule = {
         imports = [
           ./configuration.nix
         ];
         nixpkgs.overlays = [ overlay ];
+        services.foundationdb.package = lib.mkDefault foundationdb;
       };
       overlay = final: prev: derivation;
     };
