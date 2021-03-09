@@ -9,8 +9,8 @@
 # ...
   imports = [
     (import (fetchTarball {
-      url = "https://github.com/TawasalMessenger/foundationdb-flake/archive/6.3.10-1.tar.gz";
-      sha256 = "0isw3jnrhds9nma7j1856zpxd5ah4h8sqvhd839fp2qhd553zfqj";
+      url = "https://github.com/TawasalMessenger/foundationdb-flake/archive/6.3.11.tar.gz";
+      sha256 = "19visg8vabv3fvmw9irh8qclgsssh5nvb5dbzkvwi4dq05ma6jhs";
     })).nixosModule
   ];
   services.foundationdb.enable = true;
