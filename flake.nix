@@ -12,7 +12,7 @@
       flake = false;
     };
     src = {
-      url = "github:apple/foundationdb/6.3.11";
+      url = "github:apple/foundationdb/6.3.9";
       flake = false;
     };
   };
@@ -26,19 +26,16 @@
         inherit rocksdb-src pkgs src;
         version = sources.src.original.ref;
       };
-      mkApp = drv: {
-        type = "app";
-        program = "${drv.pname or drv.name}${drv.passthru.exePath}";
-      };
       derivation = { inherit foundationdb; };
     in
     with pkgs; rec {
       packages.${system} = derivation;
       defaultPackage.${system} = foundationdb;
-      apps.${system}.foundationdb = mkApp { drv = foundationdb; };
-      defaultApp.${system} = apps.foundationdb;
       legacyPackages.${system} = extend overlay;
-      devShell.${system} = callPackage ./shell.nix derivation;
+      devShell.${system} = pkgs.mkShell {
+        name = "foundationdb-env";
+        buildInputs = [ foundationdb ];
+      };
       nixosModule = {
         imports = [
           ./configuration.nix

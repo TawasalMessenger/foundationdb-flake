@@ -18,11 +18,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1614792312,
-        "narHash": "sha256-LSUtjvYOxcSP1ewymGYp4AawiWDISKZHuCTxsaXir4k=",
+        "lastModified": 1617325113,
+        "narHash": "sha256-GksR0nvGxfZ79T91UUtWjjccxazv6Yh/MvEJ82v1Xmw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a2b0ea6865b2346ceb015259c76e111dcca039c5",
+        "rev": "54c1e44240d8a527a8f4892608c4bce5440c3ecb",
         "type": "github"
       },
       "original": {
@@ -60,16 +60,16 @@
     "src": {
       "flake": false,
       "locked": {
-        "lastModified": 1614827331,
-        "narHash": "sha256-ugN/zvU0ec6pbCG8YLCqm8u3PMOHXeXZQUecC604o5M=",
+        "lastModified": 1602110072,
+        "narHash": "sha256-NOMVR+oqULoV6b6SmWeGf1XHfIe+zNkjHCp8mudv6DM=",
         "owner": "apple",
         "repo": "foundationdb",
-        "rev": "e40e78da64a46b7abd4751b5b82d512cb8cfd7c5",
+        "rev": "cb52535f4699d30beceb7ad6220ab8d7299da946",
         "type": "github"
       },
       "original": {
         "owner": "apple",
-        "ref": "6.3.11",
+        "ref": "6.3.9",
         "repo": "foundationdb",
         "type": "github"
       }
