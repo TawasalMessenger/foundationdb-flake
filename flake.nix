@@ -12,7 +12,7 @@
       flake = false;
     };
     src = {
-      url = "github:apple/foundationdb/6.3.9";
+      url = "github:apple/foundationdb/6.3.12";
       flake = false;
     };
   };
