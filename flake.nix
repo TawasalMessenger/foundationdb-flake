@@ -18,26 +18,26 @@
       sources = with builtins; (fromJSON (readFile ./flake.lock)).nodes;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      foundationdb = import ./build.nix {
+      fdb = import ./build.nix {
         inherit rocksdb-src pkgs src;
         version = sources.src.original.ref;
       };
-      derivation = { inherit foundationdb; };
+      derivation = { inherit fdb; };
     in
     with pkgs; rec {
       packages.${system} = derivation;
-      defaultPackage.${system} = foundationdb;
+      defaultPackage.${system} = fdb;
       legacyPackages.${system} = extend overlay;
       devShell.${system} = pkgs.mkShell {
-        name = "foundationdb-env";
-        buildInputs = [ foundationdb ];
+        name = "fdb-env";
+        buildInputs = [ fdb ];
       };
       nixosModule = {
         imports = [
           ./configuration.nix
         ];
         nixpkgs.overlays = [ overlay ];
-        services.foundationdb.package = lib.mkDefault foundationdb;
+        services.fdb.package = lib.mkDefault fdb;
       };
       overlay = final: prev: derivation;
     };
