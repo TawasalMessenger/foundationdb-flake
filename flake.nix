@@ -2,22 +2,18 @@
   description = "FoundationDB flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
     rocksdb-src = {
       url = "github:facebook/rocksdb/v6.10.2";
       flake = false;
     };
     src = {
-      url = "github:apple/foundationdb/6.3.12";
+      url = "github:apple/foundationdb/6.3.13";
       flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, flake-compat, rocksdb-src, src }:
+  outputs = { self, nixpkgs, rocksdb-src, src }:
     let
       sources = with builtins; (fromJSON (readFile ./flake.lock)).nodes;
       system = "x86_64-linux";
